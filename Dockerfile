@@ -1,4 +1,4 @@
-FROM node:6.11.0
+FROM node:8.10.0
 MAINTAINER Dan Lynn <docker@danlynn.org>
 
 WORKDIR /myapp
@@ -26,11 +26,11 @@ RUN \
 
 # install claudia.js
 RUN \
-	npm install claudia@2.13.0 -g
+	npm install claudia@5.3.0 -g
 
 # create install-claudia-app-template command
 RUN \
-	echo "#!/usr/bin/env bash\necho '2.13.0' > /myapp/.claudia-version && curl -LsS https://github.com/danlynn/claudia-app-template/archive/1.0.2.tar.gz > /usr/local/src/claudia-app-template.tar.gz\ntar -xz --skip-old-files --strip-components=1 --transform=s/README/TEMPLATE-README/ -f /usr/local/src/claudia-app-template.tar.gz -C /myapp" > /usr/local/bin/install-claudia-app-template &&\
+	echo "#!/usr/bin/env bash\necho '5.3.0' > /myapp/.claudia-version && curl -LsS https://github.com/danlynn/claudia-app-template/archive/1.0.2.tar.gz > /usr/local/src/claudia-app-template.tar.gz\ntar -xz --skip-old-files --strip-components=1 --transform=s/README/TEMPLATE-README/ -f /usr/local/src/claudia-app-template.tar.gz -C /myapp" > /usr/local/bin/install-claudia-app-template &&\
 	chmod a+x /usr/local/bin/install-claudia-app-template
 
 # create logs command
